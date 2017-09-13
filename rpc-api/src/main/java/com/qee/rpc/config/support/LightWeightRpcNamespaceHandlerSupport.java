@@ -1,12 +1,13 @@
 package com.qee.rpc.config.support;
 
 import com.qee.rpc.config.parser.LightWeightRpcBeanDefinitionParser;
-import com.qee.rpc.config.parser.LightWeightRpcBeanDefinitionParserD;
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by zhuqi on 2017/9/12.
  */
+@Component
 public class LightWeightRpcNamespaceHandlerSupport extends NamespaceHandlerSupport {
 
     @Override

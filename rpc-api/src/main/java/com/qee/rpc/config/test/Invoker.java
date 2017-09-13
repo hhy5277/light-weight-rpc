@@ -18,7 +18,8 @@ public class Invoker {
     private HelloService helloService2;
 
     public void print() {
-        System.out.println(helloService.hello("123"));
-        System.out.println(helloService2.hello("122344"));
+        helloService.hello("123");
+        helloService2.hello("122344");
+
     }
 }

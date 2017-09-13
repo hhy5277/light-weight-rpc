@@ -7,6 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created by zhuqi on 2017/9/12.
  */
@@ -14,23 +18,49 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration
 public class App {
 
-   /* public static void main(String[] args) {
+    private static ExecutorService executorService = Executors.newCachedThreadPool();
+
+
+    private static final CountDownLatch cd = new CountDownLatch(1);
+
+
+    public static void main(String[] args) {
 
         try {
             SpringApplication.run(App.class, args);
             System.out.println("the main Thread :" + Thread.currentThread().getName());
+            final Invoker invoker = (Invoker) ApplicationContextUtils.getBean("invoker");
+            for (int i = 0; i < 300; i++) {
+                executorService.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            cd.await();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        invoker.print();
+                    }
+                });
+            }
 
-            Invoker invoker = (Invoker) ApplicationContextUtils.getBean("invoker");
-            invoker.print();
+
+            cd.countDown();
+
+            Thread.sleep(100000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
-            ExcuteManager.shutdownNow();
+            ExcuteManager.shutdown();
+            executorService.shutdown();
         }
 
-    }*/
+    }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         SpringApplication.run(App.class, args);
 
-    }
+    }*/
 
 }

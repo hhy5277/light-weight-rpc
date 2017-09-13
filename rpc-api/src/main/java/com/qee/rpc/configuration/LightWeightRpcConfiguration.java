@@ -10,4 +10,6 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource(value = {"classpath:test.xml"})
 public class LightWeightRpcConfiguration {
 
+
+
 }

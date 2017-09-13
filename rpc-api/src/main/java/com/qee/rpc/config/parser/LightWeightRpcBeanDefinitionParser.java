@@ -1,9 +1,6 @@
 package com.qee.rpc.config.parser;
 
 import com.qee.rpc.config.model.LightWeightRPCElement;
-import com.qee.rpc.threadpool.ProxyObjectManager;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.util.StringUtils;
@@ -33,12 +30,6 @@ public class LightWeightRpcBeanDefinitionParser extends AbstractSingleBeanDefini
         if (StringUtils.hasText(interfaces)) {
             bean.addPropertyValue("interfaces", interfaces);
         }
-       /* ProxyObjectManager.addProxy(id, new ObjectFactory<Object>() {
-            @Override
-            public Object getObject() throws BeansException {
-                return null;
-            }
-        });*/
     }
 
 }
