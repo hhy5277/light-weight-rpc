@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.qee.com/schema/rpc"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://www.qee.com/schema/rpc"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
+
+    <xsd:element name="provider" type="rpc-provider-type"></xsd:element>
+
+    <xsd:element name="cumsumer" type="rpc-cumsumer-type"></xsd:element>
+
+    <xsd:complexType name="rpc-provider-type">
+        <xsd:attribute name="id" type="xsd:string" use="required"></xsd:attribute>
+        <xsd:attribute name="class" type="xsd:string" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="rpc-cumsumer-type">
+        <xsd:attribute name="id" type="xsd:string" use="required"></xsd:attribute>
+        <xsd:attribute name="interface" type="xsd:string" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+</xsd:schema>
