@@ -1,4 +1,4 @@
-package com.qee.rpc.config.test;
+package com.qee.business.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,8 +18,8 @@ public class Invoker {
     private HelloService helloService2;
 
     public void print() {
-        helloService.hello("123");
-        helloService2.hello("122344");
+        System.out.println(helloService.hello("123"));
+       // System.out.println(helloService2.hello("122344"));
 
     }
 }

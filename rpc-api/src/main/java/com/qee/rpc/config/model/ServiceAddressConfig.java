@@ -1,6 +1,7 @@
 package com.qee.rpc.config.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import java.net.InetSocketAddress;
 
@@ -9,6 +10,7 @@ import java.net.InetSocketAddress;
  */
 
 @Data
+@ToString
 public class ServiceAddressConfig {
 
     /**

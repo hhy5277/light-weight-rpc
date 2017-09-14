@@ -1,5 +1,6 @@
 package com.qee.rpc.register;
 
+import com.qee.rpc.config.init.ServiceRemoteUrlsInit;
 import com.qee.rpc.config.lbstrategy.impl.RollPolingStrategy;
 import com.qee.rpc.config.model.LightWeightRPCElement;
 import com.qee.rpc.config.model.ServiceAddressConfig;
@@ -30,6 +31,15 @@ public class RegisterRpcProxyBeanProcessor implements BeanPostProcessor, BeanFac
 
     private BeanFactory beanFactory;
 
+    public RegisterRpcProxyBeanProcessor() {
+        ServiceRemoteUrlsInit init = new ServiceRemoteUrlsInit();
+        try {
+            init.initRemoteUrls();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         return bean;
@@ -51,7 +61,7 @@ public class RegisterRpcProxyBeanProcessor implements BeanPostProcessor, BeanFac
             }
             List<ServiceAddressConfig> remoteUrls = ServiceRemoteUrlContext.getInstance().getRemoteUrls(rpcElement.getInterfaces());
             List<InetSocketAddress> remoteAddressList = ExtractUtil.extractList(remoteUrls, "remoteAddress", ServiceAddressConfig.class);
-            CallBackExcuteHandler callBackExcuteHandler = new CallBackExcuteHandler(rpcElement.getInterfaces(), remoteAddressList,new RollPolingStrategy(clazz));
+            CallBackExcuteHandler callBackExcuteHandler = new CallBackExcuteHandler(rpcElement.getInterfaces(), remoteAddressList, new RollPolingStrategy(clazz));
 
             InterfaceProxyHandler interfaceProxyHandler = new InterfaceProxyHandler(callBackExcuteHandler);
             target = Proxy.newProxyInstance(bean.getClass().getClassLoader(), new Class[]{clazz}, interfaceProxyHandler);

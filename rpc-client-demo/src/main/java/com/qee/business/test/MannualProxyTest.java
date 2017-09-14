@@ -1,4 +1,4 @@
-package com.qee.rpc.config.test;
+package com.qee.business.test;
 
 
 import com.qee.rpc.invoke.InterfaceProxyHandler;
@@ -10,7 +10,7 @@ import java.lang.reflect.Proxy;
 /**
  * Created by zhuqi on 2017/9/12.
  */
-public class TTT {
+public class MannualProxyTest {
     public static void main(String[] args) {
         try {
             //////////////////

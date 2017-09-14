@@ -1,6 +1,7 @@
 package com.qee.rpc.utils;
 
 import com.qee.rpc.config.model.ServiceAddressConfig;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -64,13 +65,19 @@ public class ServiceRemoteUrlContext {
     }
 
     /**
-     * 获取一个服务的远程地址 ，beanName like "com.qee.rpc.config.test.HelloService"
+     * 获取一个服务的远程地址 ，beanName like "com.qee.rpc.test.HelloService"
      *
      * @param beanName
      * @return
      */
     public List<ServiceAddressConfig> getRemoteUrls(String beanName) {
-        return remoteUrls.get(beanName);
+        System.out.println(beanName+"   "+Thread.currentThread().getName()+"  "+ this.toString()+remoteUrls);
+        List<ServiceAddressConfig> serviceAddressConfigs = context.remoteUrls.get(beanName);
+
+        if(CollectionUtils.isEmpty(serviceAddressConfigs)){
+            System.out.println("  ");
+        }
+        return serviceAddressConfigs;
     }
 
 

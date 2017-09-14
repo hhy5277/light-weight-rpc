@@ -54,7 +54,7 @@ public class CallBackExcuteHandler implements Callable<MessageCallback> {
         if (CollectionUtils.isEmpty(remoteAddresses)) {
             List<ServiceAddressConfig> remoteUrls = ServiceRemoteUrlContext.getInstance().getRemoteUrls(beanName);
             if (CollectionUtils.isEmpty(remoteUrls)) {
-                throw new RuntimeException("服务 [" + beanName + " ]远程地址错误");
+                throw new RuntimeException(Thread.currentThread().getName() + " 服务 [" + beanName + " ]远程地址错误");
             }
         }
 
@@ -64,7 +64,7 @@ public class CallBackExcuteHandler implements Callable<MessageCallback> {
 
 
         InetSocketAddress inetSocketAddress = remoteAddresses.get(idx);
-        System.out.println("返回的地址" + inetSocketAddress + "  idx=" + idx);
+        //System.out.println("返回的地址" + inetSocketAddress + "  idx=" + idx);
 
         MessageCallback messageCallback = new MessageCallback();
 

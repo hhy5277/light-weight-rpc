@@ -26,7 +26,7 @@ public class InterfaceProxyHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-
+        System.out.println(Thread.currentThread().getName() + " 在InterfaceProxyHandler上调用invoke方法，参数是=" + args[0]);
         MessageCallback callback = ExcuteManager.invoke(excuteHandler);
         if (callback != null && callback.getResponse() != null) {
             return callback.getResponse();

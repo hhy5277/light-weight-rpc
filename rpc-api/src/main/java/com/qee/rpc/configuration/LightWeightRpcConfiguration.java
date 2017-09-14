@@ -1,15 +1,12 @@
 package com.qee.rpc.configuration;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 
 /**
- * Created by zhuqi on 2017/9/12.
+ * Created by zhuqi on 2017/9/13.
  */
 @Configuration
-@ImportResource(value = {"classpath:test.xml"})
+@ComponentScan(basePackages = "com.qee.rpc")
 public class LightWeightRpcConfiguration {
-
-
-
 }

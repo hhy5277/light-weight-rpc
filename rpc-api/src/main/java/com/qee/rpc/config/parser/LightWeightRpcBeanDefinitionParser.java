@@ -3,6 +3,7 @@ package com.qee.rpc.config.parser;
 import com.qee.rpc.config.model.LightWeightRPCElement;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.w3c.dom.Element;
 

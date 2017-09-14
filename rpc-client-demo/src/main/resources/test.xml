@@ -9,7 +9,8 @@
         <rpc:provider id="helloServiceImpl" class="com.qee.rpc.HelloServiceImpl"/>
     -->
 
-    <rpc:cumsumer id="helloService" interface="com.qee.rpc.config.test.HelloService"/>
+    <rpc:cumsumer id="helloService" interface="com.qee.business.test.HelloService"/>
+
 
 </beans>
 

@@ -1,6 +1,6 @@
-package com.qee.rpc.test;
+package com.qee.business.app;
 
-import com.qee.rpc.config.test.Invoker;
+import com.qee.business.test.Invoker;
 import com.qee.rpc.threadpool.ExcuteManager;
 import com.qee.rpc.utils.ApplicationContextUtils;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 /**
  * Created by zhuqi on 2017/9/12.
  */
-@ComponentScan(basePackages = "com.qee.rpc")
+@ComponentScan(basePackages = "com.qee")
 @EnableAutoConfiguration
 public class App {
 
@@ -43,7 +43,7 @@ public class App {
                     }
                 });
             }
-
+            Thread.sleep(5000);
 
             cd.countDown();
 
@@ -58,7 +58,7 @@ public class App {
 
     }
 
-    /*public static void main(String[] args) {
+   /* public static void main(String[] args) {
         SpringApplication.run(App.class, args);
 
     }*/
